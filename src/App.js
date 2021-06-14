@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Button from './component/Button'
+import Card from './component/Card'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      name: '',
+      capital: '',
+      flag: '',
+      population: '',
+      region: '',
+    }
+  }
+
+
+
+  
+  getCountry = async (country) => {
+    try {
+      const result = await fetch('https://restcountries.eu/rest/v2/name/' + country)
+      
+      const countries = await result.json()
+      this.setState({
+        name: countries[0].name,
+        capital: countries[0].capital,
+        flag: countries[0].flag,
+        population: countries[0].population,
+        region: countries[0].region,
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  render() {
+    return <div>
+      <Button onClick={() => this.getCountry('France')}>France</Button>
+      <Button onClick={() => this.getCountry('Brazil')}>Brazil</Button>
+      <Button onClick={() => this.getCountry('Croatia')}>Croatia</Button>
+      <Button onClick={() => this.getCountry('Morocco')}>Morocco</Button>
+      <Card {...this.state}/>
+
+  
+
+      
     </div>
-  );
+  }
 }
 
-export default App;
+export default App

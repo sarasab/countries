@@ -22,6 +22,7 @@ class App extends React.Component {
       const result = await fetch('https://restcountries.eu/rest/v2/name/' + country)
       
       const countries = await result.json()
+      
       this.setState({
         name: countries[0].name,
         capital: countries[0].capital,
@@ -36,10 +37,12 @@ class App extends React.Component {
 
   render() {
     return <div>
-      <Button onClick={() => this.getCountry('France')}>France</Button>
-      <Button onClick={() => this.getCountry('Brazil')}>Brazil</Button>
-      <Button onClick={() => this.getCountry('Croatia')}>Croatia</Button>
-      <Button onClick={() => this.getCountry('Morocco')}>Morocco</Button>
+     <div className="text-center">
+        <Button onClick={() => this.getCountry('France')}>France</Button>
+        <Button onClick={() => this.getCountry('Brazil')}>Brazil</Button>
+        <Button onClick={() => this.getCountry('Croatia')}>Croatia</Button>
+        <Button onClick={() => this.getCountry('Morocco')}>Morocco</Button>
+      </div>
       <Card {...this.state}/>
 
   

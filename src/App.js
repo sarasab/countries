@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react'
 import Button from './component/Button'
 import Card from './component/Card'
 
+
 const App = () => {
   const [contryName, setCountryName] = useState('france')
   const [name, setName] = useState('name')
@@ -28,7 +29,7 @@ const App = () => {
 
   return (
     <div>
-      <div className="text-center" >
+      <div className="text-center" style={{fontWeight: "bold"}} >
         <Button onClick={() => setCountryName('France')}> France </Button >
         <Button onClick={() => setCountryName('Brazil')}> Brazil</Button >
         <Button onClick={() => setCountryName('Croatia')}> Croatia</Button >

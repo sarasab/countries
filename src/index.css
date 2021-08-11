@@ -1,0 +1,8 @@
+body{
+    background-image: url("./component/bg.jpg");
+    background-position: 'center';
+    background-size: 'cover';
+  width: auto;
+}
+
+.card { background-color: rgba(212, 212, 203, 0.349); }
